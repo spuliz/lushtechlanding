@@ -13,4 +13,4 @@ flake8==3.7.7
 Flask-Testing==0.7.1
 werkzeug==0.16.1
 
-# install email validator
+# install email-validator
