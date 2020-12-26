@@ -1,0 +1,94 @@
+{% extends "_base.html" %}
+{% block title %} - Welcome{% endblock %}
+
+{% block content %}
+
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="static/mp4/bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-12 my-auto">
+          <div class="masthead-content text-white py-5 py-md-0">
+            <h1 class="mb-3">Do you own an electric vehicle?</h1>
+            <p class="mb-5">Lushtech is a mobile app which allows you to monitor the performances of your scooter and get rewarded with LUSHCOINS, <strong>the digital currecy of the evironment!</strong> Our target launch date is
+              <strong>April 2021</strong>! What can you buy with LUSHCOINS? Sign up to learn more and to get your first lushcoin for free!🥇</p>
+            <form class="" role="form" method="post" action="/"> 
+              <div class="input-group input-group-newsletter"></div>
+              {{ form.csrf_token }}
+              <p>
+                {{ form.email.label }}
+              <br>
+              {{ form.email(placeholder="email@address.com") }}
+              <span class="error">
+              {% if form.email.errors %}
+              {% for error in form.email.errors %}
+              {{ error }}
+              {% endfor %}
+              {% endif %}
+              </span>
+              </p>
+                  <!-- messages -->
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                  {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                  <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a>
+                  {{message}}
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                  {% endwith %}
+                <!-- <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="submit-button"> -->
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="submit" id="submit-button">GET THE LUSHTECH STARTER PACK!</button>
+                  <br>
+                  <br> 
+                </div>
+                {% block footer %}
+                <footer class="footer">
+                  <br> 
+                  <p>Copyright &copy; 2020 <a href="https://find-and-update.company-information.service.gov.uk/company/12616338">Mylushtech LTD</a></p>
+                </footer>
+                {% endblock %}
+          
+                <br>
+                <br>
+              </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+      <!-- <li class="list-unstyled-item">
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li> -->
+      <li class="list-unstyled-item">
+        <a href="https://www.facebook.com/mylushtech">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="https://www.instagram.com/lushtech/">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/coming-soon.min.js"></script>
